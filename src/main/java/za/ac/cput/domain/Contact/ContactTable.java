@@ -2,60 +2,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package za.ac.cput.domain.GenderView;
+package za.ac.cput.domain.Contact;
 /*
 Farai Malone Chawora 
 student # 220145547
 
 */
+import java.awt.Color;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import za.ac.cput.domain.GenderView.*;
+//import za.ac.cput.domain.View.Address.*;
 import javax.swing.table.DefaultTableModel;
+import org.apache.commons.validator.EmailValidator;
 import za.ac.cput.domain.AddressType;
-import za.ac.cput.domain.Gender;
+import za.ac.cput.domain.ContactType;
 import za.ac.cput.domain.OkHttp.OkHttpClient;
 
 /**
  *
  * @author draybulambo
  */
-public class GenderTable extends javax.swing.JFrame {
+public class ContactTable extends javax.swing.JFrame {
     DefaultTableModel tableModel;
     
-    public GenderTable() {
+    public ContactTable() {
         initComponents();
         createColum();
-        populate();
-        
-    }
-    
-     public void populate(){
-    
-          List EmployeeList =OkHttpClient.getAllGenderType();
-           List<Gender> gender_List =  EmployeeList;
-           try{ 
-               
-            jTable1.setModel(tableModel);
-            tableModel = (DefaultTableModel) jTable1.getModel();
-            tableModel.setRowCount(0);
-            for (int i = 0; i < gender_List .size(); i++) {
-                
-             Object[] objs = {
-              
-               gender_List .get(i).getGenderId(),
-               gender_List .get(i).getGenderType(),
-               gender_List .get(i).getDescription()
-            
-                };
-                tableModel.addRow(objs);
-            }
-           }  catch(Exception es){
-           
-           
-           }
     }
 
     /**
@@ -75,17 +51,18 @@ public class GenderTable extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        idkey = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        gmailN = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btnList = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
+        phoneN = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -133,7 +110,7 @@ public class GenderTable extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(241, 196, 15));
+        jPanel1.setBackground(new java.awt.Color(40, 190, 246));
 
         jPanel2.setBackground(new java.awt.Color(0, 182, 148));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,26 +119,39 @@ public class GenderTable extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setEditable(false);
-        jPanel5.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 160, 40));
+        idkey.setEditable(false);
+        jPanel5.add(idkey, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 160, 40));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel2.setText("Gender id");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/martinez/Desktop/Capstone_GuiM/Images/key (1).png")); // NOI18N
         jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 40));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 250, 40));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 250, 40));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel6.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 160, 40));
+
+        gmailN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gmailNActionPerformed(evt);
+            }
+        });
+        jPanel6.add(gmailN, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 160, 40));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel3.setText("Description");
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/martinez/Desktop/Capstone_GuiM/Images/gmail.png")); // NOI18N
         jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 40));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 250, 40));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 250, 40));
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Update");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 180, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 240, 154));
         jButton1.setText("update");
@@ -181,14 +171,14 @@ public class GenderTable extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
 
-        btnList.setBackground(new java.awt.Color(102, 153, 255));
-        btnList.setText("refresh");
-        btnList.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setBackground(new java.awt.Color(102, 153, 255));
+        jButton3.setText("refresh");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnList, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, -1));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 51, 51));
         jButton4.setText("back");
@@ -196,14 +186,21 @@ public class GenderTable extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel7.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 160, 40));
+
+        phoneN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneNActionPerformed(evt);
+            }
+        });
+        jPanel7.add(phoneN, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 160, 40));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel6.setText("Gender name");
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon("/Users/martinez/Desktop/Capstone_GuiM/Images/phone-call.png")); // NOI18N
         jPanel7.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 40));
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 250, 40));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 250, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -227,7 +224,7 @@ public class GenderTable extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("LIST OF ADDRESS");
+        jLabel5.setText("LIST OF CONTACT");
 
         jPanel12.setBackground(new java.awt.Color(0, 182, 148));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -280,67 +277,101 @@ public class GenderTable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-             if(!jTextField2.getText().isEmpty()){
-          String idN=  jTextField2.getText();
-        OkHttpClient.deleteGenderById(idN);
+              if(!idkey.getText().isEmpty()){
+          String idN=  idkey.getText();
+        OkHttpClient.deleteContactById(idN);
         JOptionPane.showMessageDialog(this, " ID "+idN+"  Deleted");
-          jTextField2.setText("");
-         jTextField4.setText("");
-        jTextField3.setText("");
-        populate();
+          idkey.setText("");
+         phoneN.setText("");
+        gmailN.setText("");
         }else{
             JOptionPane.showMessageDialog(this, "Select the row please");
-       } 
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
-       populate();
-    }//GEN-LAST:event_btnListActionPerformed
+    private void phoneNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phoneNActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-             
-           if (jTextField2.getText().isEmpty()){
-         JOptionPane.showMessageDialog(this, "Id is Empty");
-      }else if(jTextField4.getText().isEmpty()){
-      
-       JOptionPane.showMessageDialog(this, "Gender Name Can not be Empty");   
-      }else if(jTextField3.getText().isEmpty()){
-      
-       JOptionPane.showMessageDialog(this, "Description Name Can not be Empty");   
-      }
-      else{
-         String IDD=jTextField2.getText();
-        String names=jTextField4.getText();
-        String descr=jTextField3.getText();
-          try {
-              OkHttpClient.UpdateGenderById(IDD, names, descr);
-              populate();
-              jTextField2.setText("");
-              jTextField4.setText("");
-              jTextField3.setText("");
-          } catch (IOException ex) {
-              Logger.getLogger(GenderTable.class.getName()).log(Level.SEVERE, null, ex);
-          }
-      }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void gmailNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gmailNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gmailNActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       pupolate();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-              
-          int row=jTable1.getSelectedRow();
-        String se=jTable1.getModel().getValueAt(row, 0).toString();
-        String names=jTable1.getModel().getValueAt(row, 1).toString();
-        String descr=jTable1.getModel().getValueAt(row, 2).toString();     
-        jTextField2.setText(se);
-         jTextField4.setText(names);
-        jTextField3.setText(descr);
+       
+        String id=tableModel.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String Email=tableModel.getValueAt(jTable1.getSelectedRow(), 1).toString();
+        String Phone=tableModel.getValueAt(jTable1.getSelectedRow(), 2).toString();
+        idkey.setText(id);
+        gmailN.setText(Email);
+        phoneN.setText(Phone);
     }//GEN-LAST:event_jTable1MouseClicked
- public  void createColum(){
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+try {
+            if(gmailN.getText().isEmpty()){
+                
+             JOptionPane.showMessageDialog(this, "Email is Empty");
+            }else if(phoneN.getText().isEmpty()){
+               
+             JOptionPane.showMessageDialog(this, "Phone Number is Empty");
+            }
+            else if(!EmailValidator.getInstance().isValid(gmailN.getText())){
+           
+               JOptionPane.showMessageDialog(this, "Enter A Valid Email");  
+            }else if( (!phoneN.getText().matches("^[0-9]*$") ) ){
+                   phoneN.setBackground(Color.red);
+                  JOptionPane.showMessageDialog(this, "Enter A Valid Phone Number");    
+            }else if(phoneN.getText().length() != 10){
+               JOptionPane.showMessageDialog(this, "Enter A Valid Phone Number");  
+            }else{
+            OkHttpClient.updateContact(Long.parseLong(idkey.getText()),gmailN.getText(), phoneN.getText());
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ContactView.class.getName()).log(Level.SEVERE, null, ex);
+        }      
+             
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+ 
+      public void pupolate(){
+    
+          List EmployeeList =OkHttpClient.getAllContactType();
+           List<ContactType> Employe_List =  EmployeeList;
+           try{ 
+               
+            jTable1.setModel(tableModel);
+            tableModel = (DefaultTableModel) jTable1.getModel();
+            tableModel.setRowCount(0);
+            for (int i = 0; i < Employe_List .size(); i++) {
+                
+             Object[] objs = {
+              
+               Employe_List .get(i).getContactId(),
+               Employe_List .get(i).getEmail(),
+               Employe_List .get(i).getPhoneNumber()
+             
+                };
+                tableModel.addRow(objs);
+            }
+           }  catch(Exception es){
+           
+           
+           }
+    }
+    public  void createColum(){
     
        tableModel=  (DefaultTableModel) jTable1.getModel();
-       tableModel.addColumn("Gender ID");
-       tableModel.addColumn("Gender Type");
-       tableModel.addColumn("Gender Description");
-    
+       tableModel.addColumn("Contactype Id");
+       tableModel.addColumn("Email");
+       tableModel.addColumn("Phone Number");
+     
     }
     /**
      * @param args the command line arguments
@@ -359,14 +390,22 @@ public class GenderTable extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GenderTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GenderTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GenderTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GenderTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -379,19 +418,22 @@ public class GenderTable extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GenderTable().setVisible(true);
+                new ContactTable().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnList;
+    private javax.swing.JTextField gmailN;
+    private javax.swing.JTextField idkey;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -408,9 +450,7 @@ public class GenderTable extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField phoneN;
     // End of variables declaration//GEN-END:variables
 }
